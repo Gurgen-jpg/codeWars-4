@@ -1,0 +1,25 @@
+function solution(list) {
+    let temp = [];
+    let flag = 0;
+    for (let i = 0; i < list.length; i++) {
+        console.log(i)
+        if (list[i] + 1 !== list[i + 1]) {
+            if (flag === 0) { 
+                temp.push(list[i]) 
+            }
+            if (flag === 1) {
+                temp.push(list[i - 1]);
+                temp.push(list[i]);
+                flag = 0
+            }
+            if (flag > 1) {
+                temp.push(list[i - flag] + '-' + list[i]);
+                flag = 0
+            }
+        } else {
+            flag++
+        }
+
+    }
+    return temp.join(',')
+}
